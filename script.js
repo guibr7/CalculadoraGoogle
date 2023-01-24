@@ -5,7 +5,6 @@ let visor = document.querySelector('#visor');
 let limpar = document.querySelector('#ac');
 let corrigir = document.querySelector('#apagar');
 
-
 function aumentarFonte(){
    fonte+=3.8;
    visor.style.fontSize =  `${fonte}px`
@@ -34,9 +33,8 @@ function diminuirFonte2(){
    return
 }
 
-/*Imprimir número na tela FUNÇÃO PRINCIPAL*/
+/*Exibir número na tela FUNÇÃO PRINCIPAL*/
 function inserir(element){
-
    if(visor.textContent === "" && element !== "-" && element !== "(" && !/[\d]/.test(element) )
    {
      return;
@@ -44,7 +42,6 @@ function inserir(element){
 
    const ultimoCarct = visor.textContent[(visor.textContent).length-1] 
    const cond = (ultimoCarct != '×' &&  ultimoCarct != '÷' && ultimoCarct != '-' && ultimoCarct != '+')
-
 
    if( element == '×' && cond == false){
       return
@@ -83,15 +80,12 @@ function inserir(element){
       }
 
       if(element === '('){ 
-
          if((visor.textContent[(visor.textContent.length)-1]) != '÷' &&  (visor.textContent[(visor.textContent.length)-1]) != '-' &&  (visor.textContent[(visor.textContent.length)-1]) != '+' &&  (visor.textContent[(visor.textContent.length)-1]) != '×')
          {
             rcbrPal+= String( '*' )
-   
          }
          console.log(parents)
          parents = element
-         
       }
 
       if(element === ","){
@@ -105,7 +99,6 @@ function inserir(element){
          rcbrPal+= '/'
          return
       }
-
 
       if(element === '×'){
          visor.innerHTML+= '×';
@@ -121,7 +114,6 @@ function inserir(element){
 /*----------------------------------------------*/
 /*Resultado*/
 function resultado(){
-
    if((visor.textContent).length<17){ /* FONTE*/
       visor.style.fontSize = '50px'
    }
@@ -139,7 +131,6 @@ function resultado(){
       visor.innerHTML = (visor.textContent).slice(0,11)
       return
    }
-
 
    if(visor.innerHTML =='Infinity'){
       visor.style.fontFamily = 'Roboto'
