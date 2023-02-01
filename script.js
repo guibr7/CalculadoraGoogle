@@ -40,7 +40,7 @@ function inserir(element){
    {
      return;
    }
-
+   /*Não permitir inserir sinais sequenciais ( -- ; ++ ; xx ; )*/
    const ultimoCarct = visor.textContent[(visor.textContent).length-1] 
    const condic = (ultimoCarct != '×' &&  ultimoCarct != '÷' && ultimoCarct != '-' && ultimoCarct != '+')
 
@@ -66,7 +66,7 @@ function inserir(element){
    }
 
    if(fonte>25){ 
-      console.log(digitVisor)
+      
 
       if((visor.textContent).length>=10 && (visor.textContent).length<30){
          diminuirFonte()
@@ -81,7 +81,7 @@ function inserir(element){
       }
 
       if(element === '('){ 
-         if((visor.textContent[(visor.textContent.length)-1]) != '÷' &&  (visor.textContent[(visor.textContent.length)-1]) != '-' &&  (visor.textContent[(visor.textContent.length)-1]) != '+' &&  (visor.textContent[(visor.textContent.length)-1]) != '×' &&  (visor.textContent[(visor.textContent.length)-1]) != '')
+         if((visor.textContent[(visor.textContent.length)-1]) != '÷' &&  (visor.textContent[(visor.textContent.length)-1]) != '×' &&  (visor.textContent[(visor.textContent.length)-1]) != '-' &&  (visor.textContent[(visor.textContent.length)-1]) != '+' &&  (visor.textContent != ''))
          {
             digitVisor+= String( '*' )
          }
@@ -108,8 +108,9 @@ function inserir(element){
       }
 
       visor.innerHTML+= element;
-      digitVisor+= String( element ) 
-      AdicionouSinal=false
+      digitVisor += String( element ) 
+      AdicionouSinal = false
+      console.log(digitVisor)
    }
 }
 
