@@ -57,7 +57,7 @@ function inserir(element){
       return
    }
    /*Divisão por 0*/
-   if(visor.innerHTML =='Impos. dividir por 0'){
+   if(visor.textContent == 'Impos. dividir por 0' || visor.textContent == 'Erro de formatação'){
       digitVisor = ''
       visor.innerHTML = ''
       visor.style.fontFamily = 'Aleo'
@@ -125,6 +125,14 @@ function resultado(){
       return
    }
 
+   if(digitVisor[0] == '(' && digitVisor[1] == '*' ){
+      visor.style.color = '#FF403C'
+      visor.style.fontFamily = 'Roboto'
+      visor.style.fontSize = '34px'
+      visor.innerHTML = 'Erro de formatação'
+      
+   }
+
    digitVisor = eval(digitVisor)
    console.log(eval(digitVisor))
    visor.innerHTML = digitVisor
@@ -134,11 +142,11 @@ function resultado(){
       return
    }
 
-   if(visor.innerHTML =='Infinity'){
+   if(visor.textContent =='Infinity'){
       visor.style.fontFamily = 'Roboto'
       visor.style.fontSize = '34px'
       visor.innerHTML = 'Impos. dividir por 0'
-      visor.style.color = '#FF8C00'
+      visor.style.color = '#FF403C'
    }
 }
 
