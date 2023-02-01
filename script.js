@@ -1,6 +1,6 @@
 let fonte = 50
-let rcbrPal = '';
-let parents = '';
+let digitVisor = '';
+let parentese = '';
 let visor = document.querySelector('#visor');
 let limpar = document.querySelector('#ac');
 let corrigir = document.querySelector('#apagar');
@@ -14,7 +14,7 @@ function apagar(){
    if((visor.textContent).length>=10 && fonte<50 ){
       aumentarFonte()
    }
-   rcbrPal = rcbrPal.slice(0,-1)
+   digitVisor = digitVisor.slice(0,-1)
    visor.innerHTML = (visor.textContent).slice(0,-1)
 }
 
@@ -33,7 +33,8 @@ function diminuirFonte2(){
    return
 }
 
-/*Exibir número na tela FUNÇÃO PRINCIPAL*/
+/*Exibir número no visor [FUNÇÃO PRINCIPAL]*/
+
 function inserir(element){
    if(visor.textContent === "" && element !== "-" && element !== "(" && !/[\d]/.test(element) )
    {
@@ -41,23 +42,23 @@ function inserir(element){
    }
 
    const ultimoCarct = visor.textContent[(visor.textContent).length-1] 
-   const cond = (ultimoCarct != '×' &&  ultimoCarct != '÷' && ultimoCarct != '-' && ultimoCarct != '+')
+   const condic = (ultimoCarct != '×' &&  ultimoCarct != '÷' && ultimoCarct != '-' && ultimoCarct != '+')
 
-   if( element == '×' && cond == false){
+   if( element == '×' && condic == false){
       return
    }
-   if( element == '÷' && cond == false){
+   if( element == '÷' && condic == false){
       return
    }
-   if( element == '+' && cond == false){
+   if( element == '+' && condic == false){
       return
    }
-   if( element == '-' && cond == false){
+   if( element == '-' && condic == false){
       return
    }
-
+   /*Divisão por 0*/
    if(visor.innerHTML =='Impos. dividir por 0'){
-      rcbrPal = ''
+      digitVisor = ''
       visor.innerHTML = ''
       visor.style.fontFamily = 'Aleo'
       visor.style.fontSize = '50px'
@@ -65,67 +66,67 @@ function inserir(element){
    }
 
    if(fonte>25){ 
-      console.log(rcbrPal)
+      console.log(digitVisor)
 
       if((visor.textContent).length>=10 && (visor.textContent).length<30){
          diminuirFonte()
       }
 
-      if(element == parents && ( (rcbrPal[rcbrPal.length -1]) != '/') && ( (rcbrPal[rcbrPal.length -1]) != '*') && ( (rcbrPal[rcbrPal.length -1]) != '-')   && ( (rcbrPal[rcbrPal.length -1]) != '+') && ( (rcbrPal[rcbrPal.length -1]) != '(')){
+      if(element == parentese && ( (digitVisor[digitVisor.length -1]) != '/') && ( (digitVisor[digitVisor.length -1]) != '*') && ( (digitVisor[digitVisor.length -1]) != '-')   && ( (digitVisor[digitVisor.length -1]) != '+') && ( (digitVisor[digitVisor.length -1]) != '(')){
          visor.innerHTML+= ")";
-         parents = ')' 
-         rcbrPal+= ")"
-         console.log(rcbrPal)
+         parentese = ')' 
+         digitVisor+= ")"
+         console.log(digitVisor)
          return
       }
 
       if(element === '('){ 
-         if((visor.textContent[(visor.textContent.length)-1]) != '÷' &&  (visor.textContent[(visor.textContent.length)-1]) != '-' &&  (visor.textContent[(visor.textContent.length)-1]) != '+' &&  (visor.textContent[(visor.textContent.length)-1]) != '×')
+         if((visor.textContent[(visor.textContent.length)-1]) != '÷' &&  (visor.textContent[(visor.textContent.length)-1]) != '-' &&  (visor.textContent[(visor.textContent.length)-1]) != '+' &&  (visor.textContent[(visor.textContent.length)-1]) != '×' &&  (visor.textContent[(visor.textContent.length)-1]) != '')
          {
-            rcbrPal+= String( '*' )
+            digitVisor+= String( '*' )
          }
-         console.log(parents)
-         parents = element
+         console.log(parentese)
+         parentese = element
       }
 
       if(element === ","){
          visor.innerHTML+= ',';
-         rcbrPal += '.'
+         digitVisor += '.'
          return
       }
 
       if(element === '÷'){
          visor.innerHTML+= '÷';
-         rcbrPal+= '/'
+         digitVisor+= '/'
          return
       }
 
       if(element === '×'){
          visor.innerHTML+= '×';
-         rcbrPal+= '*'
+         digitVisor+= '*'
          return
       }
 
       visor.innerHTML+= element;
-      rcbrPal+= String( element ) 
+      digitVisor+= String( element ) 
       AdicionouSinal=false
    }
 }
-/*----------------------------------------------*/
+
 /*Resultado*/
 function resultado(){
    if((visor.textContent).length<17){ /* FONTE*/
       visor.style.fontSize = '50px'
    }
 
-   if(rcbrPal == '' ){
+   if(digitVisor == '' ){
       visor.innerHTML= '';
       return
    }
 
-   rcbrPal = eval(rcbrPal)
-   console.log(eval(rcbrPal))
-   visor.innerHTML = rcbrPal
+   digitVisor = eval(digitVisor)
+   console.log(eval(digitVisor))
+   visor.innerHTML = digitVisor
 
    if((visor.textContent).length >= 10){
       visor.innerHTML = (visor.textContent).slice(0,11)
@@ -139,12 +140,12 @@ function resultado(){
       visor.style.color = '#FF8C00'
    }
 }
-/*----------------------------------------------*/
+
 /*Limpar visor*/
 limpar.addEventListener('click',function(){
-   parents = '';
+   parentese = '';
    visor.innerHTML = ''
-   rcbrPal = '';
+   digitVisor = '';
    fonte=50;
    visor.style.fontSize = '50px'
 }
