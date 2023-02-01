@@ -116,14 +116,6 @@ function inserir(element){
 
 /*Resultado*/
 function resultado(){
-   if((visor.textContent).length<17){ /* FONTE*/
-      visor.style.fontSize = '50px'
-   }
-
-   if(digitVisor == '' ){
-      visor.innerHTML= '';
-      return
-   }
 
    if(digitVisor[0] == '(' && digitVisor[1] == '*' ){
       visor.style.color = '#FF403C'
@@ -131,6 +123,15 @@ function resultado(){
       visor.style.fontSize = '34px'
       visor.innerHTML = 'Erro de formatação'
       
+   }
+
+   if((visor.textContent).length<17){ /* FONTE*/
+      visor.style.fontSize = '50px'
+   }
+
+   if(digitVisor == '' ){
+      visor.innerHTML= '';
+      return
    }
 
    digitVisor = eval(digitVisor)
