@@ -1,5 +1,6 @@
 function limparErro(){
    digitVisor = ''
+   digitVisor2 = ''
    cango = ''
    visor.innerHTML = ''
    visor.style.fontFamily = 'Aleo'
@@ -17,6 +18,7 @@ let corrigir = document.querySelector('#apagar');
 let cango = ''
 
 let fecharParentese = 0
+let digitVisor2 = ''
 
 function aumentarFonte(){
 fonte+=3.8;
@@ -27,7 +29,7 @@ function apagar(){
 if((visor.textContent).length>=10 && fonte<50 ){
    aumentarFonte()}
 
-if(visor.textContent == 'Erro de formatação' || digitVisor == 'Infinity' || visor.textContent == 'NaN')
+if(visor.textContent == 'Erro de formatação' || digitVisor == 'Infinity')
 {  
    visor.style.fontFamily = 'Aleo'
    visor.style.fontSize = '50px'
@@ -35,6 +37,9 @@ if(visor.textContent == 'Erro de formatação' || digitVisor == 'Infinity' || vi
 
    cango = cango.slice(0,-1)
    visor.innerHTML = cango
+
+   digitVisor = digitVisor2.slice(0,-1)
+   
    return
 }
 cango = cango.slice(0,-1)
@@ -46,7 +51,13 @@ function diminuirFonte(){
 if(fonte==36){ return }
 fonte-=3.8;
 visor.style.fontSize = `${fonte}px`
+return
+}
 
+/*Resultado com fonte normal em operações grandes*/
+function diminuirFonte2(){
+fonte+=4.5
+visor.style.fontSize = `${fonte}px`
 return
 }
 
@@ -78,6 +89,7 @@ if(fonte>25){
       visor.innerHTML+= ")";
       parentese = ')' 
       digitVisor+= ")"
+      digitVisor2+= ")"
       fecharParentese = 1
       console.log(digitVisor)
       return
@@ -87,6 +99,7 @@ if(fonte>25){
       if((visor.textContent[(visor.textContent.length)-1]) != '÷' &&  (visor.textContent[(visor.textContent.length)-1]) != '×' &&  (visor.textContent[(visor.textContent.length)-1]) != '-' &&  (visor.textContent[(visor.textContent.length)-1]) != '+' &&  (visor.textContent != ''))
       {
          digitVisor+= String( '*' )
+         digitVisor2+= String( '*' )
       }
       console.log(parentese)
       parentese = element
@@ -96,27 +109,31 @@ if(fonte>25){
    if(element === ","){
       visor.innerHTML+= ',';
       digitVisor += '.'
-      cango += element
+      digitVisor2 += '.'
+      cango += '.'
       return
    }
 
    if(element === '÷'){
       visor.innerHTML+= '÷';
       digitVisor+= '/'
-      cango += element
+      digitVisor2+= '/'
+      cango += '÷'
       return
    }
 
    if(element === '×'){
       visor.innerHTML+= '×';
       digitVisor+= '*'
-      cango += element
+      digitVisor2+= '/'
+      cango += '×'
       return
    }
 
    visor.innerHTML+= element
    digitVisor +=  element 
-   cango+=element
+   digitVisor2 +=  element 
+   cango+= element
    AdicionouSinal = false
    console.log(digitVisor)
 }
@@ -126,7 +143,7 @@ if(fonte>25){
 function resultado(){
 
 const ultimoCarct = visor.textContent[(visor.textContent).length-1] 
-const condic = (ultimoCarct == '×' ||  ultimoCarct == '÷' || ultimoCarct == '-' || ultimoCarct == '+' || ultimoCarct == '(' || ultimoCarct == '%' || ultimoCarct == ',')
+const condic = (ultimoCarct == '×' ||  ultimoCarct == '÷' || ultimoCarct == '-' || ultimoCarct == '+' || ultimoCarct == '(' || ultimoCarct == '%' || ultimoCarct == ',' || visor.textContent[(visor.textContent).length-2] == '(' )
 
 if(condic == true ){
    visor.style.color = '#FF403C'
@@ -143,7 +160,6 @@ if(digitVisor == '' ){
    visor.innerHTML= '';
    return
 }
-
 
 digitVisor = eval(digitVisor)
 console.log(eval(digitVisor))
@@ -167,6 +183,7 @@ limpar.addEventListener('click',function (){
 parentese = '';
 visor.innerHTML = ''
 digitVisor = ''
+digitVisor2 = ''
 
 cango = ''
 fonte=50;
