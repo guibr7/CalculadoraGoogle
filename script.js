@@ -67,18 +67,32 @@ function inserir(element){
 if(visor.textContent == 'Impos. dividir por 0' || visor.textContent == 'Erro de formatação')
 { limparErro() }
 
-/* Só permite inserir - com visor limpo */
+//Só permite inserir - com visor limpo 
 if(visor.textContent === "" && element !== "-" && element !== "(" && !/[\d]/.test(element) )
 { return; }
 
-/*Não permitir inserir sinais sequenciais ( -- ; ++ ; xx ; )*/
-const ultimoCarct = visor.textContent[(visor.textContent).length-1] 
-const condic = (ultimoCarct != '×' &&  ultimoCarct != '÷' && ultimoCarct != '-' && ultimoCarct != '+')
 
-if( element == '×' && condic == false){return}
-if( element == '÷' && condic == false){return}
-if( element == '+' && condic == false){return}
-if( element == '-' && condic == false){return}
+const ultimoCarct = visor.textContent[(visor.textContent).length-1] 
+
+const condic = ( ultimoCarct == '÷' || ultimoCarct == '-' || ultimoCarct == '+' ||
+ ultimoCarct == '×')
+
+
+ const condic2 = ( element == '÷' || element == '-' || element == '+' ||
+ element == '×')
+
+
+
+//Não permite inserir multiplicação e divisão após parêntese
+if( element == '×' && ultimoCarct == '(' ){return}
+if( element == '÷' && ultimoCarct == '(' ){return}
+
+//Não permite inserir sinais sequenciais ( -- ; ++ ; xx ; )
+if( element == '+' && condic == true ){return}
+if( element == '-' && condic == true ){return}
+if( element == '÷' && condic == true ){return}
+if( element == '×' && condic == true ){return}
+
 
 if(fonte>25){ 
 
@@ -129,17 +143,18 @@ if(fonte>25){
       cango += '×'
       return
    }
-
+  
    visor.innerHTML+= element
    digitVisor +=  element 
    digitVisor2 +=  element 
    cango+= element
    AdicionouSinal = false
    console.log(digitVisor)
+
 }
 }
 
-/*Resultado*/
+//Mostrar resultado na tela
 function resultado(){
 
 const ultimoCarct = visor.textContent[(visor.textContent).length-1] 
@@ -152,10 +167,12 @@ if(condic == true ){
    visor.innerHTML = 'Erro de formatação'
 }
 
-if((visor.textContent).length<17){ /* FONTE*/
+//fonte
+if((visor.textContent).length<17){ 
    visor.style.fontSize = '50px'
 }
 
+//Se usuário apertar = sem digitar algum valor
 if(digitVisor == '' ){
    visor.innerHTML= '';
    return
@@ -166,10 +183,12 @@ console.log(eval(digitVisor))
 visor.innerHTML = digitVisor
 visor.innerHTML = (String(digitVisor).replace('.',','))
 
+//Quantidade de casas decimais
 if((visor.textContent).length >= 10){
    visor.innerHTML = digitVisor.toFixed(6)
 }
 
+//Tratamento de divisão por zero
 if(visor.textContent =='Infinity'){
    visor.style.fontFamily = 'Roboto'
    visor.style.fontSize = '34px'
@@ -178,7 +197,7 @@ if(visor.textContent =='Infinity'){
 }
 }
 
-/*Limpar visor*/
+//Limpar visor
 limpar.addEventListener('click',function (){
 parentese = '';
 visor.innerHTML = ''
