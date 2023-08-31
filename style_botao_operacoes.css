@@ -1,0 +1,96 @@
+:root{
+    --backgColor: #004a77;
+    --hoverBackgColor: #0b598a;
+    --fontSz: 3.5rem;
+}
+
+#parentese{
+    background-color: var(--backgColor);
+    font-size: var(--fontSz);
+}
+
+#parentese:hover{
+    background-color: var(--hoverBackgColor);
+}
+
+#parentese:active{
+    background-color: var(--hoverBackgColor);
+}
+
+
+#porcentagem{
+    background-color: var(--backgColor);
+    font-size: var(--fontSz);
+}
+
+#porcentagem:hover{
+    background-color: var(--hoverBackgColor);
+}
+
+#porcentagem:active{
+    background-color: var(--hoverBackgColor);
+}
+
+#divisao{
+    background-color: var(--backgColor);
+    font-size: var(--fontSz);
+}
+
+#divisao:hover{
+    background-color: var(--hoverBackgColor);
+}
+
+#divisao:active{
+    background-color: var(--hoverBackgColor);
+}
+
+
+#multiplicacao{
+    background-color: var(--backgColor);
+    font-size: var(--fontSz);
+}
+
+#multiplicacao:hover{
+    background-color: var(--hoverBackgColor);
+}
+
+#multiplicacao:active{
+    background-color: var(--hoverBackgColor);
+}
+
+#soma{
+    background-color: var(--backgColor);
+    font-size: var(--fontSz);
+}
+
+#soma:hover{
+    background-color: var(--hoverBackgColor);
+}
+
+#soma:active{
+    background-color: var(--hoverBackgColor);
+}
+
+#subtracao{
+    background-color: var(--backgColor);
+    font-size: var(--fontSz);
+}
+#subtracao:hover{
+    background-color: var(--hoverBackgColor);
+}
+#subtracao:active{
+    background-color: var(--hoverBackgColor);
+}
+
+#igual{
+    background-color: var(--backgColor);
+    font-size: var(--fontSz);
+}
+#igual:hover{
+    background-color: var(--hoverBackgColor);
+}
+#igual:active{
+    background-color: var(--hoverBackgColor);
+}
+
+

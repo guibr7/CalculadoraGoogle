@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style_botao_operacoes.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,500,1,0" />
     <link rel="shortcut icon" href="Favicon/favicon.png" type="image/x-icon">
 </head>
@@ -15,26 +16,37 @@
         <div id="visor"></div> 
         <div id='aba'> </div>
         <div id="caixa_botao"> 
+
             <div class='botao'onclick= "inserir('')" id="ac" >AC</div> 
-            <div style="background-color: #004a77; font-size: 35px;" class='botao'onclick= "inserir('(')">( )</div>
-            <div style="background-color: #004a77;" class= 'botao'onclick= "inserir('%')">%</div>
-            <div style="background-color: #004a77;" class= 'botao'onclick= "inserir('÷')">÷</div> <br>                
+            <div id="parentese" class='botao' onclick= "inserir('(')">( )</div>
+            <div id="porcentagem" class= 'botao'onclick= "inserir('%')">%</div>
+            <div id='divisao' class= 'botao'onclick= "inserir('÷')">÷</div> <br>
+
             <div class='botao'onclick= "inserir('7')">7</div>
             <div class='botao'onclick= "inserir('8')">8</div>
             <div class='botao'onclick= "inserir('9')">9</div> 
-            <div style="background-color: #004a77;" class= 'botao'onclick= "inserir('×')">×</div> <br>
+            
+            <div id='multiplicacao' class= 'botao'onclick= "inserir('×')">×</div> <br>
+
             <div class='botao'onclick= "inserir('4')">4</div>                
             <div class='botao'onclick= "inserir('5')">5</div>
             <div class='botao'onclick= "inserir('6')">6</div>
-            <div style="background-color: #004a77;" class= 'botao'onclick= "inserir('-')">-</div> <br>
+
+            <div id='subtracao' class= 'botao'onclick= "inserir('-')">-</div> <br>
+
             <div class='botao'onclick= "inserir('1')">1</div>
             <div class='botao'onclick= "inserir('2')">2</div>                
             <div class='botao'onclick= "inserir('3')">3</div> 
-            <div style="background-color: #004a77;" class='botao'onclick= "inserir('+')">+</div><br>
+
+            <div id="soma" class='botao'onclick= "inserir('+')">+</div><br>
             <div class='botao'onclick= "inserir('0')">0</div>
             <div class='botao'onclick= "inserir(',')">,</div>
-            <div class='botao' onclick="apagar()" id="apagar"> <span class="material-symbols-outlined">backspace</span></div>
-            <div onclick="resultado()" style="background-color: #004a77;" class="botao" id="igual">=</div>
+
+            <div class='botao' onclick="apagar()" id="apagar">
+                <span class="material-symbols-outlined">backspace</span>
+            </div>
+
+            <div id="igual" onclick="resultado()" class="botao">=</div>
         </div>
     </div>
     <footer> 
