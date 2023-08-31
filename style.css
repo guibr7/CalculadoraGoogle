@@ -44,28 +44,28 @@ body{
     margin: 4.3rem auto;
     max-width: 30.9rem;
     min-height: 54rem;
-    background-color: #1f1f1f;
+    background-color: #1f1f1f;  
 }
 
  #visor{
     display: inline-block;
-    word-wrap:break-word; /*NAO SEI*/
-    border-bottom-left-radius: 1.2rem ;
-    border-bottom-right-radius: 1.2rem;
-    padding: .9rem;
-    padding-top: 5rem;
-    padding-right: .7rem;
-    margin: -3px 0px 0px -2px;
-    min-width: 29.7rem;
-    min-height: 10rem;
-    text-align:end;
-    overflow: hidden;
-    text-overflow: ellipsis; 
-    white-space: nowrap; 
+    white-space: nowrap;
+    text-align: right;
+    overflow-x: auto;
+    overflow-y: hidden;
     font-size: 5rem;
+
     color: #f8f8f8;
     background-color: #37393d;
-    font-family: 'Aleo'
+    font-family: 'Aleo';
+    border-bottom-left-radius: 1.2rem ;
+    border-bottom-right-radius: 1.2rem;
+
+    padding-right: 0;
+    line-height: 10rem;
+    margin: -3px 0px 0px -2px;
+    width: 31.3rem;
+    height: 10rem;
 }
 
 #caixa_botao{
@@ -130,35 +130,24 @@ footer{
 footer>p>a{
     color: #e8eaed;;  
 }
-
-/*
-.cliqueNumero{
-    animation: cliqueNumero 200ms cubic-bezier(0,1.81,1,1.32);
-    animation-fill-mode:none;
-    animation-delay: 0;
-}
-
-.cliqueOperador{
-    animation: cliqueOperador 200ms cubic-bezier(0,1.81,1,1.32);
-    animation-fill-mode: none;
-    animation-delay: 0;
-}
-
-
-
-@keyframes cliqueNumero {
-    0%{
-    }
-    100%{
-        background-color: #a0a0a0ad;
-    }
-}
-
-@keyframes cliqueOperador{
-    0%{
-    }
-    100%{
-        background-color: #9ccef1ea;
-    }
-}
-*/
+/* Barra de rolagem */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Cor de fundo da barra de rolagem */
+  ::-webkit-scrollbar-track {
+    background-color: #37393d;
+    
+  }
+  
+  /* Cor da barra de rolagem */
+  ::-webkit-scrollbar-thumb {
+    background-color:#555 ;
+    border-radius: 10px;
+  }
+  
+  /* Cor quando passa o mouse sobre a barra de rolagem */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #c4c7c5;
+  }

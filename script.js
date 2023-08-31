@@ -8,7 +8,6 @@ function limparErro(){
    visor.style.color = '#f8f8f8'
 }
 
-let fonte = 50
 let digitVisor = '';
 let parentese = '';
 let visor = document.querySelector('#visor');
@@ -20,84 +19,61 @@ let cango = ''
 let fecharParentese = 0
 let digitVisor2 = ''
 
-function aumentarFonte(){
-fonte+=3.8;
-visor.style.fontSize =  `${fonte}px`
-}
-
 function apagar(){
-if((visor.textContent).length>=10 && fonte<50 ){
-   aumentarFonte()}
-
-if(visor.textContent == 'Erro de formatação' || digitVisor == 'Infinity')
-{  
-   visor.style.fontFamily = 'Aleo'
-   visor.style.fontSize = '50px'
-   visor.style.color = '#f8f8f8'
-
+   if(visor.textContent == 'Erro de formatação' || digitVisor == 'Infinity'){  
+      visor.style.fontFamily = 'Aleo'
+      visor.style.fontSize = '4.5rem'
+      visor.style.color = '#f8f8f8'
+      cango = cango.slice(0,-1)
+      visor.innerHTML = cango
+      digitVisor = digitVisor2.slice(0,-1)
+      return
+   }
    cango = cango.slice(0,-1)
-   visor.innerHTML = cango
-
-   digitVisor = digitVisor2.slice(0,-1)
-   
-   return
-}
-cango = cango.slice(0,-1)
-digitVisor = digitVisor.slice(0,-1)
-visor.innerHTML = (visor.textContent).slice(0,-1)
-}
-
-function diminuirFonte(){
-if(fonte==36){ return }
-fonte-=3.8;
-visor.style.fontSize = `${fonte}px`
-return
-}
-
-/*Resultado com fonte normal em operações grandes*/
-function diminuirFonte2(){
-fonte+=4.5
-visor.style.fontSize = `${fonte}px`
-return
+   digitVisor = digitVisor.slice(0,-1)
+   visor.innerHTML = (visor.textContent).slice(0,-1)
 }
 
 /* Exibir número no visor [FUNÇÃO PRINCIPAL] */
-function inserir(element){
+function inserir(element){ 
+   const maxCaractere = 12;
+   const textLength = visor.textContent.length;
 
-if(visor.textContent == 'Impos. dividir por 0' || visor.textContent == 'Erro de formatação')
-{ limparErro() }
+if (textLength >= maxCaractere) {
+   visor.scrollLeft = visor.scrollWidth;
+   visor.style.fontSize = '4.5rem'
+}
 
-//Só permite inserir - com visor limpo 
-if(visor.textContent === "" && element !== "-" && element !== "(" && !/[\d]/.test(element) )
-{ return; }
+if (textLength >= 14) {
+   visor.scrollLeft = visor.scrollWidth;
+   visor.style.fontSize = '4rem'
+}
 
+   if(visor.textContent == 'Impos. dividir por 0' || visor.textContent == 'Erro de formatação')
+   { limparErro() }
 
-const ultimoCarct = visor.textContent[(visor.textContent).length-1] 
+   //Só permite inserir - com visor limpo 
+   if(visor.textContent === "" && element !== "-" && element !== "(" && !/[\d]/.test(element) )
+   { return; }
 
-const condic = ( ultimoCarct == '÷' || ultimoCarct == '-' || ultimoCarct == '+' ||
- ultimoCarct == '×')
+   const ultimoCarct = visor.textContent[(visor.textContent).length-1] 
+
+   const condic = ( ultimoCarct == '÷' || ultimoCarct == '-' || ultimoCarct == '+' ||
+   ultimoCarct == '×')
 
 
  const condic2 = ( element == '÷' || element == '-' || element == '+' ||
  element == '×')
 
+   //Não permite inserir multiplicação e divisão após parêntese
+   if( element == '×' && ultimoCarct == '(' ){return}
+   if( element == '÷' && ultimoCarct == '(' ){return}
 
-
-//Não permite inserir multiplicação e divisão após parêntese
-if( element == '×' && ultimoCarct == '(' ){return}
-if( element == '÷' && ultimoCarct == '(' ){return}
-
-//Não permite inserir sinais sequenciais ( -- ; ++ ; xx ; )
-if( element == '+' && condic == true ){return}
-if( element == '-' && condic == true ){return}
-if( element == '÷' && condic == true ){return}
-if( element == '×' && condic == true ){return}
-
-
-if(fonte>25){ 
-
-   if((visor.textContent).length>=10 && (visor.textContent).length<30)
-   {diminuirFonte()}
+   //Não permite inserir sinais sequenciais ( -- ; ++ ; xx ; )
+   if( element == '+' && condic == true ){return}
+   if( element == '-' && condic == true ){return}
+   if( element == '÷' && condic == true ){return}
+   if( element == '×' && condic == true ){return}
 
    if(element == parentese && ( (digitVisor[digitVisor.length -1]) != '/') && ( (digitVisor[digitVisor.length -1]) != '*') && ( (digitVisor[digitVisor.length -1]) != '-')   && ( (digitVisor[digitVisor.length -1]) != '+') && ( (digitVisor[digitVisor.length -1]) != '(')){
       visor.innerHTML+= ")";
@@ -143,69 +119,58 @@ if(fonte>25){
       cango += '×'
       return
    }
-  
    visor.innerHTML+= element
    digitVisor +=  element 
    digitVisor2 +=  element 
    cango+= element
    AdicionouSinal = false
    console.log(digitVisor)
-
-}
 }
 
 //Mostrar resultado na tela
 function resultado(){
+   const ultimoCarct = visor.textContent[(visor.textContent).length-1] 
+   const condic = (ultimoCarct == '×' ||  ultimoCarct == '÷' || ultimoCarct == '-' || ultimoCarct == '+' || ultimoCarct == '(' || ultimoCarct == '%' || ultimoCarct == ',' || visor.textContent[(visor.textContent).length-2] == '(' )
 
-const ultimoCarct = visor.textContent[(visor.textContent).length-1] 
-const condic = (ultimoCarct == '×' ||  ultimoCarct == '÷' || ultimoCarct == '-' || ultimoCarct == '+' || ultimoCarct == '(' || ultimoCarct == '%' || ultimoCarct == ',' || visor.textContent[(visor.textContent).length-2] == '(' )
+   if(condic == true ){
+      visor.style.color = '#FF403C'
+      visor.style.fontFamily = 'Roboto'
+      visor.style.fontSize = '3.4rem'
+      visor.innerHTML = 'Erro de formatação'
+   }
 
-if(condic == true ){
-   visor.style.color = '#FF403C'
-   visor.style.fontFamily = 'Roboto'
-   visor.style.fontSize = '34px'
-   visor.innerHTML = 'Erro de formatação'
-}
+   //Se usuário apertar = sem digitar algum valor
+   if(digitVisor == '' ){
+      visor.innerHTML= '';
+      return
+   }
 
-//fonte
-if((visor.textContent).length<17){ 
-   visor.style.fontSize = '50px'
-}
+   digitVisor = eval(digitVisor)
+   console.log(eval(digitVisor))
+   visor.innerHTML = digitVisor
+   visor.innerHTML = (String(digitVisor).replace('.',','))
 
-//Se usuário apertar = sem digitar algum valor
-if(digitVisor == '' ){
-   visor.innerHTML= '';
-   return
-}
+   //Quantidade de casas decimais
+   if((visor.textContent).length >= 10){
+      visor.innerHTML = digitVisor.toFixed(3)
+   }
 
-digitVisor = eval(digitVisor)
-console.log(eval(digitVisor))
-visor.innerHTML = digitVisor
-visor.innerHTML = (String(digitVisor).replace('.',','))
-
-//Quantidade de casas decimais
-if((visor.textContent).length >= 10){
-   visor.innerHTML = digitVisor.toFixed(6)
-}
-
-//Tratamento de divisão por zero
-if(visor.textContent =='Infinity'){
-   visor.style.fontFamily = 'Roboto'
-   visor.style.fontSize = '34px'
-   visor.innerHTML = 'Impos. dividir por 0'
-   visor.style.color = '#FF403C'
-}
+   //Tratamento de divisão por zero
+   if(visor.textContent =='Infinity'){
+      visor.style.fontFamily = 'Roboto'
+      visor.style.fontSize = '3.4rem'
+      visor.innerHTML = 'Impos. dividir por 0'
+      visor.style.color = '#FF403C'
+   }
 }
 
 //Limpar visor
 limpar.addEventListener('click',function (){
-parentese = '';
-visor.innerHTML = ''
-digitVisor = ''
-digitVisor2 = ''
-
-cango = ''
-fonte=50;
-visor.style.fontSize = '50px'
-}
+   parentese = '';
+   visor.innerHTML = ''
+   digitVisor = ''
+   digitVisor2 = ''
+   cango = ''
+   visor.style.fontSize = '5rem'
+   }
 )
