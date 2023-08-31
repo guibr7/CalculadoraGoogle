@@ -99,7 +99,9 @@ body{
 }
 
 .botao:active{
+    outline: none;
     background-color: #323234;
+    -webkit-tap-highlight-color: transparent ;
 }
 
 #ac{

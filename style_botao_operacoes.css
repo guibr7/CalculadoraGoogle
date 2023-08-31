@@ -9,53 +9,38 @@
     font-size: var(--fontSz);
 }
 
-#parentese:hover{
+#parentese:hover,parentese:active{
     background-color: var(--hoverBackgColor);
+    -webkit-tap-highlight-color: transparent ;
 }
-
-#parentese:active{
-    background-color: var(--hoverBackgColor);
-}
-
 
 #porcentagem{
     background-color: var(--backgColor);
     font-size: var(--fontSz);
 }
-
-#porcentagem:hover{
+#porcentagem:hover,porcentagem:active{
     background-color: var(--hoverBackgColor);
+    -webkit-tap-highlight-color: transparent ;
 }
 
-#porcentagem:active{
-    background-color: var(--hoverBackgColor);
-}
 
 #divisao{
     background-color: var(--backgColor);
     font-size: var(--fontSz);
 }
-
-#divisao:hover{
+#divisao:hover,divisao:active{
     background-color: var(--hoverBackgColor);
+    -webkit-tap-highlight-color: transparent ;
 }
-
-#divisao:active{
-    background-color: var(--hoverBackgColor);
-}
-
 
 #multiplicacao{
     background-color: var(--backgColor);
     font-size: var(--fontSz);
 }
 
-#multiplicacao:hover{
+#multiplicacao:hover,multiplicacao:active{
     background-color: var(--hoverBackgColor);
-}
-
-#multiplicacao:active{
-    background-color: var(--hoverBackgColor);
+    -webkit-tap-highlight-color: transparent ;
 }
 
 #soma{
@@ -63,34 +48,29 @@
     font-size: var(--fontSz);
 }
 
-#soma:hover{
+#soma:hover,soma:active{
     background-color: var(--hoverBackgColor);
+    -webkit-tap-highlight-color: transparent ;
 }
 
-#soma:active{
-    background-color: var(--hoverBackgColor);
-}
 
 #subtracao{
     background-color: var(--backgColor);
     font-size: var(--fontSz);
 }
-#subtracao:hover{
+#subtracao:hover,subtracao:active{
     background-color: var(--hoverBackgColor);
+    -webkit-tap-highlight-color: transparent ;
 }
-#subtracao:active{
-    background-color: var(--hoverBackgColor);
-}
+
 
 #igual{
     background-color: var(--backgColor);
     font-size: var(--fontSz);
 }
-#igual:hover{
+#igual:hover,igual:active{
     background-color: var(--hoverBackgColor);
-}
-#igual:active{
-    background-color: var(--hoverBackgColor);
+    -webkit-tap-highlight-color: transparent ;
 }
 
 
